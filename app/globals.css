@@ -26,11 +26,27 @@ body {
 
 a:hover,
 button:hover {
-  @apply text-[#9cff9c];
+  @apply text-green-700 dark:text-[#9cff9c];
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .dark-text {
+    @apply dark:text-neutral-300;
+  }
+
+  .light-text {
+    @apply text-neutral-950;
+  }
+
+  .dark-bg {
+    @apply dark:bg-gray-900;
+  }
+
+  .lgiht-bg {
+    @apply bg-gray-300;
+  }
+
+  .hover-color {
+    @apply hover:text-green-700 dark:hover:text-[#9cff9c];
   }
 }

@@ -31,11 +31,11 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }: HeaderProps) => {
           <button onClick={toggleTheme}>
             {theme === "light" ? (
               <>
-                <SunIcon className="size-6 text-white hover:text-[#9cff9c]" />
+                <SunIcon className="size-6 light-text dark-text hover-color" />
               </>
             ) : (
               <>
-                <MoonIcon className="size-6 text-white hover:text-[#9cff9c]" />
+                <MoonIcon className="size-6 light-text dark-text hover-color" />
               </>
             )}
           </button>

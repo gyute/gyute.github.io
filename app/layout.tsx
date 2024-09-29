@@ -18,7 +18,7 @@ export default function RootLayout({
       <head>
         <title>Gyute&apos;s Blog</title>
       </head>
-      <body className="bg-white dark:bg-gray-900 dark:text-neutral-300">
+      <body className="lgiht-bg light-text dark-bg dark-text mx-10 my-5 sm:mx-20 sm:my-10">
         <Header theme={theme} toggleTheme={toggleTheme} />
         {children}
         <Footer />
