@@ -7,7 +7,7 @@ export default function Blog() {
 
   return (
     <div className="container">
-      {posts.map((post) => {
+      {posts?.map((post) => {
         const { month, day, year } = formatDate(post.date);
 
         return (
