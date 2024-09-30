@@ -1,6 +1,7 @@
 "use client";
 
-import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
+import { AiOutlineMoon, AiOutlineSun } from "react-icons/ai";
+import Link from "next/link";
 import React from "react";
 
 type HeaderProps = {
@@ -31,11 +32,11 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }: HeaderProps) => {
           <button onClick={toggleTheme}>
             {theme === "light" ? (
               <>
-                <SunIcon className="size-6 light-text dark-text hover-color" />
+                <AiOutlineSun className="size-7 light-text dark-text hover-color active:animate-spin" />
               </>
             ) : (
               <>
-                <MoonIcon className="size-6 light-text dark-text hover-color" />
+                <AiOutlineMoon className="size-7 light-text dark-text hover-color active:animate-spin" />
               </>
             )}
           </button>
