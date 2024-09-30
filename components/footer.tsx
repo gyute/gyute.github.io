@@ -6,7 +6,7 @@ import React from "react";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="py-6">
+    <footer className="pb-4 pt-20">
       <div className="container mx-auto text-center flex justify-between">
         <div>Copyright &copy; 2024 Gyute Park</div>
         <div className="flex justify-center items-center gap-4">

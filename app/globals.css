@@ -29,6 +29,12 @@ button:hover {
   @apply text-green-700 dark:text-[#9cff9c];
 }
 
+@layer base {
+  html {
+    @apply max-w-screen-lg mx-auto;
+  }
+}
+
 @layer utilities {
   .dark-text {
     @apply dark:text-neutral-300;
