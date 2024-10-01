@@ -5,21 +5,21 @@ import matter from "gray-matter";
 export type Post = {
   title: string;
   date: string;
+  slug: string;
   description: string;
   content: string;
-  slug: string;
 };
 
-const contentDir = path.join(process.cwd(), "contents/posts");
+const contentsDir = path.join(process.cwd(), "contents/posts");
 
 export function getPostSlugs(): string[] {
   try {
-    if (!fs.existsSync(contentDir)) {
-      console.error(`Directory not found: ${contentDir}`);
+    if (!fs.existsSync(contentsDir)) {
+      console.error(`Directory not found: ${contentsDir}`);
       return [];
     }
 
-    return fs.readdirSync(contentDir);
+    return fs.readdirSync(contentsDir);
   } catch (err) {
     console.error(`Error reading directory: ${(err as Error).message}`);
     return [];
@@ -27,8 +27,8 @@ export function getPostSlugs(): string[] {
 }
 
 export function getPostBySlug(slug: string): Post | null {
-  const realSlug = slug.replace(/\.md$/, "");
-  const fullPath = path.join(contentDir, `${realSlug}.md`);
+  const filename = slug.replace(/\.md$/, "");
+  const fullPath = path.join(contentsDir, `${filename}.md`);
 
   try {
     if (!fs.existsSync(fullPath)) {
@@ -42,9 +42,9 @@ export function getPostBySlug(slug: string): Post | null {
     return {
       title: data.title,
       date: data.date,
+      slug: filename,
       description: data.description,
       content,
-      slug: realSlug,
     };
   } catch (err) {
     console.error(`Error reading file: ${(err as Error).message}`);
