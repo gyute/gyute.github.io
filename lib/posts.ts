@@ -2,12 +2,12 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-export type Post = {
+export type PostType = {
   title: string;
   date: string;
   slug: string;
-  description: string;
   content: string;
+  assets?: string[];
 };
 
 const contentsDir = path.join(process.cwd(), "contents/posts");
@@ -26,7 +26,7 @@ export function getPostSlugs(): string[] {
   }
 }
 
-export function getPostBySlug(slug: string): Post | null {
+export function getPostBySlug(slug: string): PostType | null {
   const filename = slug.replace(/\.md$/, "");
   const fullPath = path.join(contentsDir, `${filename}.md`);
 
@@ -43,8 +43,8 @@ export function getPostBySlug(slug: string): Post | null {
       title: data.title,
       date: data.date,
       slug: filename,
-      description: data.description,
       content,
+      assets: data.assets,
     };
   } catch (err) {
     console.error(`Error reading file: ${(err as Error).message}`);
@@ -52,7 +52,7 @@ export function getPostBySlug(slug: string): Post | null {
   }
 }
 
-export function getAllPosts(): Post[] {
+export function getAllPosts(): PostType[] {
   const slugs = getPostSlugs();
 
   if (slugs.length === 0) {
@@ -61,7 +61,7 @@ export function getAllPosts(): Post[] {
 
   const posts = slugs
     .map((slug) => getPostBySlug(slug))
-    .filter((post): post is Post => post !== null);
+    .filter((post): post is PostType => post !== null);
 
   return posts.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
