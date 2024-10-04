@@ -7,6 +7,7 @@ import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 import "highlight.js/styles/github.css";
 
 interface PostProps {
@@ -25,9 +26,10 @@ export default async function Post({ params }: PostProps) {
 
   const processedContent = await unified()
     .use(remarkParse)
-    .use(remarkRehype)
-    .use(rehypeHighlight)
     .use(remarkGfm)
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeRaw)
+    .use(rehypeHighlight)
     .use(rehypeStringify)
     .process(post.content);
 
