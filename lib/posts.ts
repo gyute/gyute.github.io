@@ -16,6 +16,8 @@ export function getPostSlugs(): string[] {
   try {
     if (!fs.existsSync(contentsDir)) {
       console.error(`Directory not found: ${contentsDir}`);
+      fs.mkdirSync(contentsDir, { recursive: true });
+      console.log(`Directory created: ${contentsDir}`);
       return [];
     }
 
