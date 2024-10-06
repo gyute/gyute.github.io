@@ -5,10 +5,9 @@ import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
-import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import "highlight.js/styles/github.css";
+import rehypePrettyCode from "rehype-pretty-code";
 
 interface PostProps {
   params: {
@@ -19,6 +18,7 @@ interface PostProps {
 export default async function Post({ params }: PostProps) {
   const { slug } = params;
   const post = getPostBySlug(slug);
+  const theme = "github-dark-dimmed";
 
   if (!post) {
     return notFound();
@@ -28,8 +28,10 @@ export default async function Post({ params }: PostProps) {
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypePrettyCode, {
+      theme: theme,
+    })
     .use(rehypeRaw)
-    .use(rehypeHighlight)
     .use(rehypeStringify)
     .process(post.content);
 
