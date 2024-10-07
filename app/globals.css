@@ -93,3 +93,13 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 code[data-line-numbers-max-digits="4"] > [data-line]::before {
   width: 2.25rem;
 }
+
+code [data-highlighted-line-id="inserted"] {
+  color: #0f0;
+  background-color: rgba(0, 255, 0, 0.1);
+}
+
+code [data-highlighted-line-id="deleted"] {
+  color: #f00;
+  background-color: rgba(255, 0, 0, 0.1);
+}
