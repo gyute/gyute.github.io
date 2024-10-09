@@ -20,7 +20,7 @@ export default function RootLayout({
       </head>
       <body className="lgiht-bg light-text dark-bg dark-text mx-10 my-5 sm:mx-20 sm:my-10">
         <Header theme={theme} toggleTheme={toggleTheme} />
-        {children}
+        <main className="min-h-[65vh] sm:min-h-[70vh]">{children}</main>
         <Footer />
       </body>
       {/* Google tag (gtag.js) */}
