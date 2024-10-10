@@ -6,38 +6,23 @@ export const useTheme = () => {
   const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-      const savedTheme = localStorage.getItem("theme");
+    if (typeof window === "undefined") return;
+    const savedTheme = localStorage.getItem("theme");
+    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+      .matches
+      ? "dark"
+      : "light";
+    const theme = savedTheme || systemTheme;
 
-      const handleChange = () => {
-        setTheme(mediaQuery.matches ? "dark" : "light");
-      };
-
-      if (savedTheme !== null) {
-        setTheme(savedTheme);
-      } else {
-        const t = mediaQuery.matches ? "dark" : "light";
-        setTheme(t);
-        localStorage.setItem("theme", t);
-      }
-
-      mediaQuery.addEventListener("change", handleChange);
-      return () => mediaQuery.removeEventListener("change", handleChange);
-    }
+    setTheme(theme);
+    localStorage.setItem("theme", theme);
   }, []);
 
   const toggleTheme = () => {
-    let t: string;
-
-    if (theme === "light") {
-      t = "dark";
-    } else {
-      t = "light";
-    }
-
-    setTheme(t);
-    localStorage.setItem("theme", t);
+    const toggledTheme = theme === "light" ? "dark" : "light";
+    setTheme(toggledTheme);
+    localStorage.setItem("theme", toggledTheme);
+    document.documentElement.classList.toggle("dark", toggledTheme === "dark");
   };
 
   return { theme, toggleTheme };
