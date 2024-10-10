@@ -67,7 +67,12 @@ export function generateMetadata({
   const { slug } = params;
   const post = getPostBySlug(slug);
 
+  if (!post)
+    return {
+      title: "Gyute's Blog",
+    };
+
   return {
-    title: `${post!.title} | Gyute`,
+    title: `${post.title} | Gyute`,
   };
 }
