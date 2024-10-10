@@ -8,6 +8,7 @@ import rehypeStringify from "rehype-stringify";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import rehypePrettyCode from "rehype-pretty-code";
+import { Metadata } from "next";
 
 interface PostProps {
   params: {
@@ -56,4 +57,17 @@ export async function generateStaticParams() {
   return slugs.map((filename) => ({
     slug: filename.replace(".md", ""),
   }));
+}
+
+export function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Metadata {
+  const { slug } = params;
+  const post = getPostBySlug(slug);
+
+  return {
+    title: `${post!.title} | Gyute`,
+  };
 }

@@ -27,7 +27,7 @@ export function getPostSlugs(): string[] {
 }
 
 export function getPostBySlug(slug: string): PostType | null {
-  const filename = slug.replace(/\.md$/, "");
+  const filename = slug?.endsWith(".md") ? slug.replace(/\.md$/, "") : slug;
   const fullPath = path.join(contentsDir, `${filename}.md`);
 
   try {

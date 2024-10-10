@@ -2,6 +2,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import Script from "next/script";
+import { Metadata } from "next";
 
 export default function RootLayout({
   children,
@@ -26,7 +27,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
-        <title>Gyute&apos;s Blog</title>
         <script dangerouslySetInnerHTML={{ __html: setInitialTheme }} />
       </head>
       <body className="lgiht-bg light-text dark-bg dark-text mx-10 my-5 sm:mx-20 sm:my-10">
@@ -55,3 +55,7 @@ export default function RootLayout({
     </html>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Gyute's Blog",
+};
