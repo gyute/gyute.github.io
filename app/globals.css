@@ -2,34 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html {
-  scroll-behavior: smooth;
-  scrollbar-gutter: stable;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-a:hover,
-button:hover {
-  @apply text-green-700 dark:text-[#9cff9c];
-}
-
 @layer base {
   html {
     @apply max-w-screen-lg mx-auto;
@@ -56,6 +28,30 @@ button:hover {
   .hover-color {
     @apply hover:text-green-700 dark:hover:text-[#9cff9c];
   }
+
+  .md-todo {
+    @apply [&_ul]:pl-5 [&_li]:my-1;
+  }
+
+  .md-table {
+    @apply [&_table]:w-full [&_th]:px-4 [&_th]:py-2 [&_th]:text-left [&_th]:border-b [&_td]:px-4 [&_td]:py-2;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a:hover,
+button:hover {
+  @apply text-green-700 dark:text-[#9cff9c];
 }
 
 pre {
