@@ -6,7 +6,6 @@ import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 import remarkGfm from "remark-gfm";
-import rehypeRaw from "rehype-raw";
 import rehypePrettyCode from "rehype-pretty-code";
 import { Metadata } from "next";
 
@@ -32,8 +31,7 @@ export default async function Post({ params }: PostProps) {
     .use(rehypePrettyCode, {
       theme: theme,
     })
-    .use(rehypeRaw)
-    .use(rehypeStringify)
+    .use(rehypeStringify, { allowDangerousHtml: true })
     .process(post.content);
 
   const contentHTML = processedContent.toString();
