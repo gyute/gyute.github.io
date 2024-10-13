@@ -4,6 +4,7 @@ import matter from "gray-matter";
 
 export type PostType = {
   title: string;
+  description?: string;
   date: string;
   slug: string;
   content: string;
@@ -41,6 +42,7 @@ export function getPostBySlug(slug: string): PostType | null {
 
     return {
       title: data.title,
+      description: data.description,
       date: data.date,
       slug: filename,
       content,

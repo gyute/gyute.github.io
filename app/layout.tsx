@@ -57,5 +57,10 @@ export default function RootLayout({
 }
 
 export const metadata: Metadata = {
-  title: "Gyute's Blog",
+  title: "@gyute",
+  openGraph: {
+    type: "website",
+    url: "https://gyute.com",
+    siteName: "@gyute",
+  },
 };

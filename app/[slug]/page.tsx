@@ -70,10 +70,16 @@ export function generateMetadata({
 
   if (!post)
     return {
-      title: "Gyute's Blog",
+      title: "@gyute",
     };
 
   return {
-    title: `${post.title} | Gyute`,
+    title: `${post.title} | gyute`,
+    description: post.description,
+    openGraph: {
+      type: "article",
+      url: `https://gyute.com/${slug}`,
+      siteName: "@gyute",
+    },
   };
 }

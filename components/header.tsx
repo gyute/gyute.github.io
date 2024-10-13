@@ -20,7 +20,7 @@ const Header: React.FC = () => {
       <div className="container mx-auto flex justify-between items-center">
         <div>
           <h1 className="text-2xl font-bold">
-            <Link href={"/"}>Gyute&apos;s Blog</Link>
+            <Link href={"/"}>@gyute</Link>
           </h1>
         </div>
         <div className="flex space-x-5">
