@@ -29,6 +29,10 @@
     @apply hover:text-green-700 dark:hover:text-[#9cff9c];
   }
 
+  .md-default {
+    @apply [&_img]:rounded-md [&_img]:mx-auto [&_pre]:rounded-md;
+  }
+
   .md-todo {
     @apply [&_ul]:pl-5 [&_li]:my-1;
   }

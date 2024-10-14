@@ -43,7 +43,7 @@ export default async function Post({ params }: PostProps) {
         <h1 className="text-2xl font-bold mb-2">{post.title}</h1>
         <p className="text-gray-500 mb-8">{postDate(post.date)}</p>
         <div
-          className="text-gray-300 md-todo md-table"
+          className="text-gray-900 dark:text-gray-300 md-default md-todo md-table"
           dangerouslySetInnerHTML={{ __html: contentHTML }}
         />
       </div>
