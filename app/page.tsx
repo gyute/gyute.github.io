@@ -1,19 +1,23 @@
-import { formatDate } from "@/lib/date";
-import { getAllPosts, PostType } from "@/lib/posts";
 import Link from "next/link";
 
+import { formatDate } from "@/lib/date";
+import { Post, getAllPosts } from "@/lib/posts";
+
 export default function Blog() {
-  const posts: PostType[] = getAllPosts();
+  const posts: (Post | null)[] = getAllPosts();
 
   return (
     <div className="container">
       {posts?.map((post) => {
+        if (post === null || !post.date || !post.slug || !post.title)
+          return null;
+
         const { month, day, year } = formatDate(post.date);
 
         return (
           <div
             key={post.slug}
-            className="flex sm:flex-row flex-col sm:items-center gap-1 sm:gap-3 md:gap-0"
+            className="flex sm:flex-row flex-col sm:items-center gap-1 sm:gap-3 md:gap-0 sm:mb-5 mb-7"
           >
             <div className="text-base text-gray-500 w-2/12 flex justify-start gap-3">
               <span className="w-full sm:w-1/3 md:w-1/4 text-left">

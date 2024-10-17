@@ -28,18 +28,6 @@
   .hover-color {
     @apply hover:text-green-700 dark:hover:text-[#9cff9c];
   }
-
-  .md-default {
-    @apply [&_img]:rounded-md [&_img]:mx-auto [&_pre]:rounded-md;
-  }
-
-  .md-todo {
-    @apply [&_ul]:pl-5 [&_li]:my-1;
-  }
-
-  .md-table {
-    @apply [&_table]:w-full [&_th]:px-4 [&_th]:py-2 [&_th]:text-left [&_th]:border-b [&_td]:px-4 [&_td]:py-2;
-  }
 }
 
 html {

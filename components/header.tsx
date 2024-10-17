@@ -1,8 +1,9 @@
 "use client";
 
-import { AiOutlineMoon, AiOutlineSun } from "react-icons/ai";
 import Link from "next/link";
 import React from "react";
+import { AiOutlineMoon, AiOutlineSun } from "react-icons/ai";
+
 import { useTheme } from "@/lib/useTheme";
 
 const Header: React.FC = () => {

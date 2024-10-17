@@ -1,8 +1,9 @@
 import "./globals.css";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
-import Script from "next/script";
 import { Metadata } from "next";
+import Script from "next/script";
+
+import Footer from "@/components/footer";
+import Header from "@/components/header";
 
 export default function RootLayout({
   children,

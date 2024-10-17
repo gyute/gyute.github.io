@@ -1,8 +1,9 @@
 import fs from "fs";
 import path from "path";
+
 import matter from "gray-matter";
 
-export type PostType = {
+export type Post = {
   title: string;
   description?: string;
   date: string;
@@ -20,33 +21,33 @@ export function getPostSlugs(): string[] {
       return [];
     }
 
-    return fs.readdirSync(contentsDir);
+    const fileNames = fs.readdirSync(contentsDir);
+    return fileNames
+      .filter((fileName) => fileName.endsWith(".mdx"))
+      .map((fileName) => fileName.replace(/\.mdx$/, ""));
   } catch (err) {
     console.error(`Error reading directory: ${(err as Error).message}`);
     return [];
   }
 }
 
-export function getPostBySlug(slug: string): PostType | null {
-  const filename = slug?.endsWith(".md") ? slug.replace(/\.md$/, "") : slug;
-  const fullPath = path.join(contentsDir, `${filename}.md`);
+export function getPostBySlug(slug: string): Post | null {
+  const filePath = path.join(contentsDir, `${slug}.mdx`);
 
   try {
-    if (!fs.existsSync(fullPath)) {
-      console.error(`File not found: ${fullPath}`);
+    if (!fs.existsSync(filePath)) {
+      console.error(`File not found: ${filePath}`);
       return null;
     }
-
-    const fileContents = fs.readFileSync(fullPath, "utf8");
-    const { data, content } = matter(fileContents);
+    const mdx = fs.readFileSync(filePath, "utf8");
+    const { data: frontMatter, content } = matter(mdx);
 
     return {
-      title: data.title,
-      description: data.description,
-      date: data.date,
-      slug: filename,
+      title: frontMatter.title,
+      description: frontMatter.description,
+      date: frontMatter.date,
+      slug,
       content,
-      assets: data.assets,
     };
   } catch (err) {
     console.error(`Error reading file: ${(err as Error).message}`);
@@ -54,18 +55,15 @@ export function getPostBySlug(slug: string): PostType | null {
   }
 }
 
-export function getAllPosts(): PostType[] {
+export function getAllPosts(): (Post | null)[] {
   const slugs = getPostSlugs();
 
   if (slugs.length === 0) {
     return [];
   }
 
-  const posts = slugs
+  return slugs
     .map((slug) => getPostBySlug(slug))
-    .filter((post): post is PostType => post !== null);
-
-  return posts.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+    .filter((post) => post !== null && post.date)
+    .sort((a, b) => new Date(b!.date).getTime() - new Date(a!.date).getTime());
 }

@@ -1,14 +1,13 @@
-import { getPostBySlug, getPostSlugs } from "@/lib/posts";
-import { postDate } from "@/lib/date";
-import { notFound } from "next/navigation";
-import { unified } from "unified";
-import remarkParse from "remark-parse";
-import remarkRehype from "remark-rehype";
-import rehypeStringify from "rehype-stringify";
-import remarkGfm from "remark-gfm";
-import rehypePrettyCode from "rehype-pretty-code";
+import { evaluate } from "@mdx-js/mdx";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import * as runtime from "react/jsx-runtime";
+import rehypePrettyCode from "rehype-pretty-code";
+import remarkGfm from "remark-gfm";
+
 import Comments from "@/components/comments";
+import { postDate } from "@/lib/date";
+import { getPostBySlug, getPostSlugs } from "@/lib/posts";
 
 interface PostProps {
   params: {
@@ -19,33 +18,36 @@ interface PostProps {
 export default async function Post({ params }: PostProps) {
   const { slug } = params;
   const post = getPostBySlug(slug);
-  const theme = "github-dark-dimmed";
-
-  if (!post) {
+  if (!post?.content) {
     return notFound();
   }
 
-  const processedContent = await unified()
-    .use(remarkParse)
-    .use(remarkGfm)
-    .use(remarkRehype, { allowDangerousHtml: true })
-    .use(rehypePrettyCode, {
-      theme: theme,
-    })
-    .use(rehypeStringify, { allowDangerousHtml: true })
-    .process(post.content);
-
-  const contentHTML = processedContent.toString();
+  const { default: Content } = await evaluate(post.content, {
+    ...runtime,
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [rehypePrettyCode],
+  });
 
   return (
     <>
       <div className="container">
-        <h1 className="text-2xl font-bold mb-2">{post.title}</h1>
-        <p className="text-gray-500 mb-8">{postDate(post.date)}</p>
+        <h2 className="text-4xl dark-text light-text mb-5">{post.title}</h2>
+        <p className="text-gray-500 text-lg mb-12">{postDate(post.date)}</p>
         <div
-          className="text-gray-900 dark:text-gray-300 md-default md-todo md-table"
-          dangerouslySetInnerHTML={{ __html: contentHTML }}
-        />
+          className="
+            text-lg dark-text light-text my-3
+            [&_p]:my-3
+            [&_h1]:text-5xl [&_h1]:my-7
+            [&_h2]:text-4xl [&_h2]:my-6
+            [&_h3]:text-3xl [&_h3]:my-5
+            [&_img]:mx-auto
+            [&_pre]:rounded-lg
+            [&_ul]:pl-5 [&_li]:my-1
+            [&_a]:underline [&_a]:underline-offset-4 [&_a]:decoration-green-700 [&_a]:dark:decoration-[#9cff9c]
+          "
+        >
+          <Content />
+        </div>
       </div>
       <Comments />
     </>
@@ -53,11 +55,7 @@ export default async function Post({ params }: PostProps) {
 }
 
 export async function generateStaticParams() {
-  const slugs = getPostSlugs();
-
-  return slugs.map((filename) => ({
-    slug: filename.replace(".md", ""),
-  }));
+  return getPostSlugs().map((slug) => ({ slug }));
 }
 
 export function generateMetadata({
@@ -74,7 +72,7 @@ export function generateMetadata({
     };
 
   return {
-    title: `${post.title} | gyute`,
+    title: post.title,
     description: post.description,
     openGraph: {
       type: "article",
