@@ -54,7 +54,7 @@ export default async function Post({ params }: PostProps) {
   );
 }
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return getPostSlugs().map((slug) => ({ slug }));
 }
 
