@@ -9,7 +9,6 @@ export type Post = {
   date: string;
   slug: string;
   content: string;
-  assets?: string[];
 };
 
 const contentsDir = path.join(process.cwd(), "contents/posts");
