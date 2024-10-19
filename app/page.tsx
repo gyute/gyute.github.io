@@ -31,7 +31,7 @@ export default function Blog() {
               </span>
             </div>
             <h2 className="text-lg ml-7 flex-grow">
-              <Link href={`/${post.slug}`}>{post.title}</Link>
+              <Link href={`/posts/${post.slug}`}>{post.title}</Link>
             </h2>
           </div>
         );
