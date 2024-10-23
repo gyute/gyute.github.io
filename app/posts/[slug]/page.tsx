@@ -1,9 +1,11 @@
-import { evaluate } from "@mdx-js/mdx";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import * as runtime from "react/jsx-runtime";
 import rehypePrettyCode from "rehype-pretty-code";
+import rehypeStringify from "rehype-stringify";
 import remarkGfm from "remark-gfm";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import { unified } from "unified";
 
 import Comments from "@/components/comments";
 import { postDate } from "@/lib/date";
@@ -22,11 +24,15 @@ export default async function Post({ params }: PostProps) {
     return notFound();
   }
 
-  const { default: Content } = await evaluate(post.content, {
-    ...runtime,
-    remarkPlugins: [remarkGfm],
-    rehypePlugins: [rehypePrettyCode],
-  });
+  const html = (
+    await unified()
+      .use(remarkParse)
+      .use(remarkGfm)
+      .use(remarkRehype, { allowDangerousHtml: true })
+      .use(rehypeStringify, { allowDangerousHtml: true })
+      .use(rehypePrettyCode, { theme: "material-theme-palenight" })
+      .process(post.content)
+  ).toString();
 
   return (
     <>
@@ -46,9 +52,8 @@ export default async function Post({ params }: PostProps) {
             [&_ul]:pl-5 [&_li]:my-1
             [&_a]:underline [&_a]:underline-offset-4 [&_a]:decoration-green-700 [&_a]:dark:decoration-[#9cff9c]
           "
-        >
-          <Content />
-        </div>
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
       </div>
       <Comments />
     </>

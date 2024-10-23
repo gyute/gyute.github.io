@@ -22,8 +22,8 @@ export function getPostSlugs(): string[] {
 
     const fileNames = fs.readdirSync(contentsDir);
     return fileNames
-      .filter((fileName) => fileName.endsWith(".mdx"))
-      .map((fileName) => fileName.replace(/\.mdx$/, ""));
+      .filter((fileName) => fileName.endsWith(".md"))
+      .map((fileName) => fileName.replace(/\.md$/, ""));
   } catch (err) {
     console.error(`Error reading directory: ${(err as Error).message}`);
     return [];
@@ -31,15 +31,15 @@ export function getPostSlugs(): string[] {
 }
 
 export function getPostBySlug(slug: string): Post | null {
-  const filePath = path.join(contentsDir, `${slug}.mdx`);
+  const filePath = path.join(contentsDir, `${slug}.md`);
 
   try {
     if (!fs.existsSync(filePath)) {
       console.error(`File not found: ${filePath}`);
       return null;
     }
-    const mdx = fs.readFileSync(filePath, "utf8");
-    const { data: frontMatter, content } = matter(mdx);
+    const md = fs.readFileSync(filePath, "utf8");
+    const { data: frontMatter, content } = matter(md);
 
     return {
       title: frontMatter.title,
