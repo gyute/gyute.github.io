@@ -52,7 +52,7 @@ export default async function Post({ params }: PostProps) {
 export function generateStaticParams() {
   const params = getPostSlugs().map((slug) => ({ slug }));
   if (params.length === 0) {
-    return [];
+    return [{ slug: "not-found" }];
   }
   return params;
 }
