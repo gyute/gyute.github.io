@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    @apply max-w-screen-lg mx-auto;
+    @apply mx-auto max-w-screen-lg;
   }
 }
 
@@ -27,6 +27,26 @@
 
   .hover-color {
     @apply hover:text-green-700 dark:hover:text-[#9cff9c];
+  }
+
+  .markdown-text {
+    @apply [&_h1]:my-7 [&_h1]:text-4xl [&_h2]:my-6 [&_h2]:text-3xl [&_h3]:my-5 [&_h3]:text-2xl [&_h4]:my-4 [&_h4]:text-xl [&_p]:my-3;
+  }
+
+  .markdown-image {
+    @apply [&_img]:mx-auto;
+  }
+
+  .markdown-link {
+    @apply [&_a]:underline [&_a]:decoration-green-700 [&_a]:underline-offset-4 [&_a]:dark:decoration-[#9cff9c];
+  }
+
+  .markdown-code {
+    @apply [&_pre]:rounded-lg;
+  }
+
+  .markdown-checkbox {
+    @apply [&_li]:my-1 [&_ul]:pl-5;
   }
 }
 

@@ -17,20 +17,20 @@ export default function Blog() {
         return (
           <div
             key={post.slug}
-            className="flex sm:flex-row flex-col sm:items-center gap-1 sm:gap-3 md:gap-0 sm:mb-5 mb-7"
+            className="mb-7 flex flex-col gap-1 sm:mb-5 sm:flex-row sm:items-center sm:gap-3 md:gap-0"
           >
-            <div className="text-base text-gray-500 w-2/12 flex justify-start gap-3">
-              <span className="w-full sm:w-1/3 md:w-1/4 text-left">
+            <div className="flex w-2/12 justify-start gap-3 text-base text-gray-500">
+              <span className="w-full text-left sm:w-1/3 md:w-1/4">
                 {month}
               </span>
-              <span className="w-full sm:w-1/3 md:w-1/4 text-center">
+              <span className="w-full text-center sm:w-1/3 md:w-1/4">
                 {day},
               </span>
-              <span className="w-full sm:w-1/3 md:w-1/4 text-center">
+              <span className="w-full text-center sm:w-1/3 md:w-1/4">
                 {year}
               </span>
             </div>
-            <h2 className="text-lg ml-7 flex-grow">
+            <h2 className="ml-7 flex-grow text-lg">
               <Link href={`/posts/${post.slug}`}>{post.title}</Link>
             </h2>
           </div>

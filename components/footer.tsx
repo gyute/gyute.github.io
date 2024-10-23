@@ -5,11 +5,11 @@ import { AiOutlineGithub } from "react-icons/ai";
 const Footer: React.FC = () => {
   return (
     <footer className="pb-4 pt-20">
-      <div className="container mx-auto text-center flex justify-between">
+      <div className="container mx-auto flex justify-between text-center">
         <div>Copyright &copy; 2024 Gyute</div>
-        <div className="flex justify-center items-center gap-4">
+        <div className="flex items-center justify-center gap-4">
           <Link href="https://github.com/gyute">
-            <AiOutlineGithub className="size-7 light-text dark-text hover-color active:animate-spin" />
+            <AiOutlineGithub className="light-text dark-text hover-color size-7 active:animate-spin" />
           </Link>
         </div>
       </div>

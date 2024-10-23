@@ -17,8 +17,8 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="pt-4 pb-14">
-      <div className="container mx-auto flex justify-between items-center">
+    <header className="pb-14 pt-4">
+      <div className="container mx-auto flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold">
             <Link href={"/"}>@gyute</Link>
@@ -45,10 +45,10 @@ const Header: React.FC = () => {
           >
             <div className="relative flex size-7">
               {themeClicked && (
-                <span className="animate-ping absolute inline-flex size-full rounded-full bg-[#9cff9c] opacity-75" />
+                <span className="absolute inline-flex size-full animate-ping rounded-full bg-[#9cff9c] opacity-75" />
               )}
-              <AiOutlineSun className="block dark:hidden size-7 light-text dark-text hover-color active:animate-ping" />
-              <AiOutlineMoon className="hidden dark:block size-7 light-text dark-text hover-color active:animate-ping" />
+              <AiOutlineSun className="light-text dark-text hover-color block size-7 active:animate-ping dark:hidden" />
+              <AiOutlineMoon className="light-text dark-text hover-color hidden size-7 active:animate-ping dark:block" />
             </div>
           </div>
         </div>
