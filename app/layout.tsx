@@ -30,9 +30,9 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: setInitialTheme }} />
       </head>
-      <body className="lgiht-bg light-text dark-bg dark-text mx-10 my-5 sm:mx-20 sm:my-10">
+      <body className="lgiht-bg light-text dark-bg dark-text mx-10 my-5 sm:mx-20">
         <Header />
-        <main className="min-h-[65vh] sm:min-h-[70vh]">{children}</main>
+        <main className="min-h-[63vh] sm:min-h-[67vh]">{children}</main>
         <Footer />
       </body>
       {/* Google tag (gtag.js) */}

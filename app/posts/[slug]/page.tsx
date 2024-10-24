@@ -36,11 +36,11 @@ export default async function Post({ params }: PostProps) {
 
   return (
     <>
-      <div className="container">
-        <h1 className="dark-text light-text mb-5 text-4xl">{post.title}</h1>
+      <div className="dark-text light-text container">
+        <h1 className="my-5">{post.title}</h1>
         <p className="mb-12 text-lg text-gray-500">{postDate(post.date)}</p>
         <div
-          className="dark-text light-text markdown-text markdown-image markdown-link markdown-code markdown-checkbox my-3 text-lg"
+          className="markdown-link my-3 text-lg"
           dangerouslySetInnerHTML={{ __html: html }}
         />
       </div>

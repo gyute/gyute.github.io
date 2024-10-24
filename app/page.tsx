@@ -20,19 +20,13 @@ export default function Blog() {
             className="mb-7 flex flex-col gap-1 sm:mb-5 sm:flex-row sm:items-center sm:gap-3 md:gap-0"
           >
             <div className="flex w-2/12 justify-start gap-3 text-base text-gray-500">
-              <span className="w-full text-left sm:w-1/3 md:w-1/4">
-                {month}
-              </span>
-              <span className="w-full text-center sm:w-1/3 md:w-1/4">
-                {day},
-              </span>
-              <span className="w-full text-center sm:w-1/3 md:w-1/4">
-                {year}
-              </span>
+              <h3 className="w-full text-left sm:w-1/3 md:w-1/4">{month}</h3>
+              <h3 className="w-full text-center sm:w-1/3 md:w-1/4">{day},</h3>
+              <h3 className="w-full text-center sm:w-1/3 md:w-1/4">{year}</h3>
             </div>
-            <h2 className="ml-7 flex-grow text-lg">
+            <h3 className="ml-7 flex-grow">
               <Link href={`/posts/${post.slug}`}>{post.title}</Link>
-            </h2>
+            </h3>
           </div>
         );
       })}
