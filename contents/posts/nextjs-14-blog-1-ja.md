@@ -73,9 +73,20 @@ npx create-next-app@14
 
 を入力、初期設定を行う。
 
-<img src="/nextjs-blog/create-next-app.png" alt="create-next-app@14 configuration" class="rounded-lg my-5">
+```sh
+Need to install the following packages:
+create-next-app@14.2.16
+Ok to proceed? (y) y
+✔ What is your project named? … <user>.github.io
+✔ Would you like to use TypeScript? … Yes
+✔ Would you like to use ESLint? … Yes
+✔ Would you like to use Tailwind CSS? … Yes
+✔ Would you like to use `src/` directory? … No
+✔ Would you like to use App Router? (recommended) … Yes
+✔ Would you like to customize the default import alias (@/*)? … No
+```
 
-始めにプロジェクト名の入力を求められるので、今後のことを考えて`<user>.github.io{:gg}`と入力。その後は、`Yes > Yes > Yes > No > Yes > No{:gg}`に選択したが、デフォルトのままなのでエンターを押し続けるだけ。`TypeScript{:gg}`、`ESLint{:gg}`、`Tailwind CSS{:gg}`、`App Router{:gg}`は全部使うし、`src/{:gg}`と`customize import alias{:gg}`は使わない。
+今後のことも考えてプロジェクト名は`<user>.github.io{:gg}`と入力。その後は、`Yes > Yes > Yes > No > Yes > No{:gg}`に選択したが、デフォルトのままなのでエンターを押し続けるだけ。`TypeScript{:gg}`、`ESLint{:gg}`、`Tailwind CSS{:gg}`、`App Router{:gg}`は全部使うし、`src/{:gg}`と`customize import alias{:gg}`は使わない。
 
 `create-next-app{:gg}`のパッケージインストールが終わったら、作られたディレクトリに<span class="underline decoration-wavy font-bold">移動</span>し、git設定を行う。まず`create-next-app{:gg}`が勝手にコミットを追加するので`.git{:gg}`の削除から。
 
