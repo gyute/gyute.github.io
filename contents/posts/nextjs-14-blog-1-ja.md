@@ -6,7 +6,7 @@ description: "Next.js14でブログを作ってみる. GitHub Pages, Next.js14, 
 
 2024年の後半はNext.js12から14にマイグレーションするプロジェクトで、App RouterとPages Routerの並行だったり、12と14のレンダリング方式の相違だったりでReactの基礎とNext.jsの理解にかなり役立つ経験ができた。せっかくの機会なので頭を14に切り替えたく14を使ってMarkdownブログを作ってみた。
 
-この作業でGitHub Pagesに静的サイト<a id="aid1" href="#ref1" class="jump">[1]</a>でデプロイすることでサーバコンポーネント(Server Components, SC)とクライアントコンポーネント(Client Components, CC)の分離の練習にもなった。今後は検索機能なども追加していくつもりだ。それでは早速GitHubの設定から始める。
+今回GitHub Pagesに静的サイト<a id="aid1" href="#ref1" class="jump">[1]</a>でデプロイすることでサーバコンポーネント(Server Components, SC)とクライアントコンポーネント(Client Components, CC)の分離の練習にもなった。今後は検索機能なども追加していくつもりだ。それでは早速GitHubの設定から始める。
 
 ## tools
 
@@ -87,7 +87,7 @@ git remote add origin git@github.com:<user>/<user>.github.io
 git pull origin main --rebase
 ```
 
-そして、不要なファイルとコードを削除する
+そして、不要なファイルとコードを削除する。
 
 ```sh
 rm -rf app/favicon.ico app/fonts
