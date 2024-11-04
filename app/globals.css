@@ -123,7 +123,7 @@
     @apply dark:bg-gray-900;
   }
 
-  .lgiht-bg {
+  .light-bg {
     @apply bg-gray-300;
   }
 
