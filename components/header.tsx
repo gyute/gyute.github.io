@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from "react";
 import { AiOutlineMoon, AiOutlineSun } from "react-icons/ai";
 
+import { BLOG_TITLE } from "@/components/constants";
 import { useTheme } from "@/lib/useTheme";
 
 const Header: React.FC = () => {
@@ -21,7 +22,7 @@ const Header: React.FC = () => {
       <div className="container mx-auto flex items-center justify-between">
         <div>
           <h1 className="my-0">
-            <Link href={"/"}>@gyute</Link>
+            <Link href={"/"}>{BLOG_TITLE}</Link>
           </h1>
         </div>
         <div className="flex space-x-5">

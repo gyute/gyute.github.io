@@ -8,6 +8,7 @@ import remarkRehype from "remark-rehype";
 import { unified } from "unified";
 
 import Comments from "@/components/comments";
+import { BLOG_TITLE } from "@/components/constants";
 import { postDate } from "@/lib/date";
 import { getPostBySlug, getPostSlugs } from "@/lib/posts";
 
@@ -67,7 +68,7 @@ export function generateMetadata({
 
   if (!post)
     return {
-      title: "@gyute",
+      title: BLOG_TITLE,
     };
 
   return {
@@ -76,7 +77,7 @@ export function generateMetadata({
     openGraph: {
       type: "article",
       url: `https://gyute.com/${slug}`,
-      siteName: "@gyute",
+      siteName: BLOG_TITLE,
     },
   };
 }
