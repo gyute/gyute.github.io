@@ -7,7 +7,7 @@ import { AiOutlineMoon, AiOutlineSun } from "react-icons/ai";
 import { BLOG_TITLE } from "@/components/constants";
 import { useTheme } from "@/lib/useTheme";
 
-const Header: React.FC = () => {
+export const Header: React.FC = () => {
   const { toggleTheme } = useTheme();
   const [themeClicked, setThemeClicked] = React.useState(false);
 
@@ -57,5 +57,3 @@ const Header: React.FC = () => {
     </header>
   );
 };
-
-export default Header;

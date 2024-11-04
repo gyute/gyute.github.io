@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export default function Comments() {
+export function Comments() {
   const [theme, setTheme] = useState("");
 
   useEffect(() => {

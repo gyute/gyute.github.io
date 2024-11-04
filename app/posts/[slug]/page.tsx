@@ -7,7 +7,7 @@ import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import { unified } from "unified";
 
-import Comments from "@/components/comments";
+import { Comments } from "@/components/comments";
 import { BLOG_TITLE } from "@/components/constants";
 import { postDate } from "@/lib/date";
 import { getPostBySlug, getPostSlugs } from "@/lib/posts";

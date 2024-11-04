@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { AiOutlineGithub } from "react-icons/ai";
 
-const Footer: React.FC = () => {
+export const Footer: React.FC = () => {
   return (
     <footer className="pb-4 pt-20">
       <div className="container mx-auto flex justify-between text-center">
@@ -16,5 +16,3 @@ const Footer: React.FC = () => {
     </footer>
   );
 };
-
-export default Footer;

@@ -3,8 +3,8 @@ import { Metadata } from "next";
 import Script from "next/script";
 
 import { BLOG_TITLE } from "@/components/constants";
-import Footer from "@/components/footer";
-import Header from "@/components/header";
+import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
 
 export default function RootLayout({
   children,
