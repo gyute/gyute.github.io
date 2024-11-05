@@ -11,16 +11,16 @@ export type Post = {
   content: string;
 };
 
-const contentsDir = path.join(process.cwd(), "contents/posts");
+const contentsDirPath = path.join(process.cwd(), "contents/posts");
 
 export function getPostSlugs(): string[] {
   try {
-    if (!fs.existsSync(contentsDir)) {
-      console.error(`Directory not found: ${contentsDir}`);
+    if (!fs.existsSync(contentsDirPath)) {
+      console.error(`Directory not found: ${contentsDirPath}`);
       return [];
     }
 
-    const fileNames = fs.readdirSync(contentsDir);
+    const fileNames = fs.readdirSync(contentsDirPath);
     return fileNames
       .filter((fileName) => fileName.endsWith(".md"))
       .map((fileName) => fileName.replace(/\.md$/, ""));
@@ -31,16 +31,16 @@ export function getPostSlugs(): string[] {
 }
 
 export function getPostBySlug(slug: string): Post | null {
-  const filePath = path.join(contentsDir, `${slug}.md`);
+  const mdPath = path.join(contentsDirPath, `${slug}.md`);
 
   try {
-    if (!fs.existsSync(filePath)) {
-      console.error(`File not found: ${filePath}`);
+    if (!fs.existsSync(mdPath)) {
+      console.error(`File not found: ${mdPath}`);
       return null;
     }
-    const md = fs.readFileSync(filePath, "utf8");
-    const { data: frontMatter, content } = matter(md);
 
+    const md = fs.readFileSync(mdPath, "utf8");
+    const { data: frontMatter, content } = matter(md);
     return {
       title: frontMatter.title,
       description: frontMatter.description,
@@ -56,7 +56,6 @@ export function getPostBySlug(slug: string): Post | null {
 
 export function getAllPosts(): (Post | null)[] {
   const slugs = getPostSlugs();
-
   if (slugs.length === 0) {
     return [];
   }
