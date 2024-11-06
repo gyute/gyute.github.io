@@ -12,14 +12,11 @@ import { BLOG_TITLE } from "@/components/constants";
 import { postDate } from "@/lib/date";
 import { getPostBySlug, getPostSlugs } from "@/lib/posts";
 
-interface PostProps {
-  params: {
-    slug: string;
-  };
-}
-
-export default async function Post({ params }: PostProps) {
-  const { slug } = params;
+export default async function Post({
+  params: { slug },
+}: {
+  params: { slug: string };
+}) {
   const post = getPostBySlug(slug);
   if (!post?.content) {
     return notFound();
