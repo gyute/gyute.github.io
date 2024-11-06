@@ -34,7 +34,7 @@ export default async function Post({
 
   return (
     <>
-      <div className="dark-text light-text container">
+      <div className="dark-text light-text container mx-auto">
         <h1 className="my-5">{post.title}</h1>
         <p className="mb-12 text-lg text-gray-500">{postDate(post.date)}</p>
         <div
