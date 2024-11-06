@@ -56,11 +56,10 @@ export function generateStaticParams() {
 }
 
 export function generateMetadata({
-  params,
+  params: { slug },
 }: {
   params: { slug: string };
 }): Metadata {
-  const { slug } = params;
   const post = getPostBySlug(slug);
 
   if (!post)
