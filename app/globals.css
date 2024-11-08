@@ -41,7 +41,7 @@
   }
 
   li {
-    @apply my-1;
+    @apply my-1 break-words;
   }
 
   hr {
