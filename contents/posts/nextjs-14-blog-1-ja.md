@@ -210,7 +210,7 @@ npm install -D prettier prettier-plugin-tailwindcss autoprefixer eslint-plugin-i
 
 ---
 
-1: App Routerでは[Static Rendering](https://nextjs.org/docs/14/app/building-your-application/rendering/server-components#static-rendering-default)、Pages Routerでは[Static Site Generation(SSG)](https://nextjs.org/docs/14/pages/building-your-application/rendering/static-site-generation) <a id="ref1" href="#aid1" class="jump">return ↩</a>
+1: [Static Rendering](https://nextjs.org/docs/14/app/building-your-application/rendering/server-components#static-rendering-default)と[Static Site Generation(SSG)](https://nextjs.org/docs/14/pages/building-your-application/rendering/static-site-generation) <a id="ref1" href="#aid1" class="jump">return ↩</a>
 
 2: 違う名前でリポジトリ名をすることもできるが、その場合は、
 
