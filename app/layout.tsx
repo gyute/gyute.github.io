@@ -31,7 +31,7 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: setInitialTheme }} />
       </head>
-      <body className="light-bg light-text dark-bg dark-text mx-10 my-5 sm:mx-20">
+      <body className="light-bg light-text dark-bg dark-text mx-5 my-5 sm:mx-20">
         <Header />
         <main className="min-h-[63vh] sm:min-h-[67vh]">{children}</main>
         <Footer />
