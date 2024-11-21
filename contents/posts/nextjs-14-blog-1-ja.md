@@ -185,7 +185,7 @@ npm install -D prettier prettier-plugin-tailwindcss autoprefixer eslint-plugin-i
 }
 ```
 
-`icons{:gg}`、`Markdown{:gg}`などのパッケージも気に入れておくと楽だと思うが、どこに使われるのかを意識せずにパッケージを入れるのはよくないと思うので、必要な時に入れることにする。
+`icons{:gg}`、`Markdown{:gg}`などのパッケージも一気に入れておくと楽だと思うが、どこに使われるのかを意識せずにパッケージを入れるのはよくないと思うので、必要な時に入れることにする。
 
 現在のディレクトリ構成は以下のようになる。
 
