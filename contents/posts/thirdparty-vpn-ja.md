@@ -11,6 +11,10 @@ Tailscaleは、WireGuardをベースにしたVPNサービスだ。特徴とし�
 
 類似ソルーションとして、CloudflareのCloudflare Tunnelというサービスがある。費用面では両者とも個人サーバー運用の用途には無料プランで十分使える設定となっていた。が、CloudflareはP2Pではないことから、今回はTailscaleを使うことにした。
 
+## 活用
+
+状況によっては、ルーターを直接触れなかったりでネット設定を自由に変更できない環境下のサーバー(デバイス)を運用しなければならない場合<a id="aid1" href="#ref1" class="jump">[1]</a>もあると思う。その時、TailscaleやCloudflare TunnelといったVPNサービスを使うことで、ポートフォワーディング(Port Forwarding)やDDNSの設定なしでも、外部からWake-on-LAN<a id="aid2" href="#ref2" class="jump">[2]</a>で開発PCを起こしたり、localhostへのアクセスが簡単に実現可能になる。
+
 ## インストール
 
 https://login.tailscale.com にアクセスして会員登録(SSO)を行う。
@@ -29,7 +33,7 @@ https://login.tailscale.com にアクセスして会員登録(SSO)を行う。
 
 ### macOS
 
-macOSの場合は、Mac App Storeからのインストールがメインで案内されるが、App Storeはアップデート管理がしにくいので、Homebrewでインストールし、UPする<a id="aid1" href="#ref1" class="jump">[1]</a>。
+macOSの場合は、Mac App Storeからのインストールがメインで案内されるが、App Storeはアップデート管理がしにくいので、Homebrewでインストールし、UPする<a id="aid3" href="#ref3" class="jump">[3]</a>。
 
 ```sh
 brew install tailscale
@@ -84,4 +88,8 @@ sudo tailscale up --ssh
 
 ---
 
-1: `tailscale up{:gg}`でデフォルトでは`--ssh=false{:gg}`となっているが、`--ssh{:gg}`をつけることで、Tailscaleが認証を持ってくれる。<a id="ref1" href="#aid1" class="jump">return ↩</a>
+1: シェアハウスとか研究室とか。<a id="ref1" href="#aid1" class="jump">return ↩</a>
+
+2: 低電力サーバーを24時間稼働できれば最高だが、家で遊んでいるRaspberry Piを積極的に活用しよう。事前にmagic packetを送るスクリプトやバイナリーを用意しておくことで、必要な時にRaspberry Piに接続し、メインの開発環境をWOLで起こすことができる。[go-wol](https://github.com/sabhiram/go-wol)や[wakeonlanスクリプト](https://github.com/jpoliv/wakeonlan)などがおすすめ。<a id="ref2" href="#aid2" class="jump">return ↩</a>
+
+3: `tailscale up{:gg}`でデフォルトでは`--ssh=false{:gg}`となっているが、`--ssh{:gg}`をつけることで、Tailscaleが認証を持ってくれる。<a id="ref3" href="#aid3" class="jump">return ↩</a>
