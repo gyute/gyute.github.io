@@ -40,7 +40,21 @@ brew install tailscale
 tailscale up --ssh
 ```
 
-そしたら、
+ここでもし、
+
+```log
+failed to connect to local Tailscale service; is Tailscale running?
+```
+
+と表示される場合は、
+
+```sh
+sudo brew services start tailscale
+```
+
+をしてから、もう一度`tailscale up --ssh{:gg}`を実行する。
+
+UPできたら、
 
 ```log
 To authenticate, visit:
