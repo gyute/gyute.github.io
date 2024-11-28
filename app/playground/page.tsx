@@ -1,9 +1,5 @@
-"use client";
-
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 
 export default function Playground() {
-  const router = useRouter();
-
-  router.replace("/");
+  redirect("/");
 }
