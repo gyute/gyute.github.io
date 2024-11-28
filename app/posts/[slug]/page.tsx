@@ -72,7 +72,7 @@ export function generateMetadata({
     description: post.description,
     openGraph: {
       type: "article",
-      url: `https://gyute.com/${slug}`,
+      url: `https://gyute.com/posts/${slug}`,
       siteName: BLOG_TITLE,
     },
   };
