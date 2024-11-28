@@ -2,7 +2,7 @@ import "./globals.css";
 import { Metadata } from "next";
 import Script from "next/script";
 
-import { BLOG_TITLE } from "@/components/constants";
+import { BLOG_TITLE, BLOG_URL } from "@/components/constants";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 
@@ -61,8 +61,12 @@ export default function RootLayout({
 export const metadata: Metadata = {
   title: BLOG_TITLE,
   openGraph: {
+    title: BLOG_TITLE,
     type: "website",
-    url: "https://gyute.com",
+    url: BLOG_URL,
     siteName: BLOG_TITLE,
+  },
+  alternates: {
+    canonical: BLOG_URL,
   },
 };
