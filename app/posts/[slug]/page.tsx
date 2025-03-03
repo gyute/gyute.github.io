@@ -40,7 +40,15 @@ export default async function Post({
     <>
       <div className="dark-text light-text container mx-auto">
         <h1 className="my-5">{post.title}</h1>
-        <p className="mb-12 text-lg text-gray-500">{postDate(post.date)}</p>
+        <p className="mb-12 text-lg text-gray-500">
+          {postDate(post.createdAt)}
+          {post.updatedAt && (
+            <>
+              <br />
+              {postDate(post.updatedAt)}
+            </>
+          )}
+        </p>
         <div
           className="markdown-link markdown-table my-3 text-lg"
           dangerouslySetInnerHTML={{ __html: html }}

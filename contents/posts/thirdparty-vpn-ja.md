@@ -1,6 +1,6 @@
 ---
 title: "Tailscaleを使って無料で簡単にVPN活"
-date: 2024-11-24
+createdAt: 2024-11-24
 description: "Tailscaleを使って無料で簡単なVPN活. 鍵管理からの解放"
 ---
 

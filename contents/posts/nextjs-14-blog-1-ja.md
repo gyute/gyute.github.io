@@ -1,6 +1,6 @@
 ---
 title: "Next.js14とGitHub Pagesでブログを作ってみる: 基本設定"
-date: 2024-10-30
+createdAt: 2024-10-30
 description: "Next.js14でブログを作ってみる. GitHub Pages, Next.js14, TypeScript, TailwindCSS."
 ---
 

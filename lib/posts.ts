@@ -6,7 +6,8 @@ import matter from "gray-matter";
 export type Post = {
   title: string;
   description?: string;
-  date: string;
+  createdAt: string;
+  updatedAt?: string;
   slug: string;
   content: string;
 };
@@ -44,7 +45,8 @@ export function getPostBySlug(slug: string): Post | null {
     return {
       title: frontMatter.title,
       description: frontMatter.description,
-      date: frontMatter.date,
+      createdAt: frontMatter.createdAt,
+      updatedAt: frontMatter.updatedAt,
       slug,
       content,
     };
@@ -62,6 +64,9 @@ export function getAllPosts(): (Post | null)[] {
 
   return slugs
     .map((slug) => getPostBySlug(slug))
-    .filter((post) => post !== null && post.date)
-    .sort((a, b) => new Date(b!.date).getTime() - new Date(a!.date).getTime());
+    .filter((post) => post !== null && post.createdAt)
+    .sort(
+      (a, b) =>
+        new Date(b!.createdAt).getTime() - new Date(a!.createdAt).getTime(),
+    );
 }

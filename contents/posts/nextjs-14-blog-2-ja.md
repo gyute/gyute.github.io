@@ -1,6 +1,6 @@
 ---
 title: "Next.js14とGitHub Pagesでブログを作ってみる: スケルトン"
-date: 2024-11-09
+createdAt: 2024-11-09
 description: "Markdownでブログポスト."
 ---
 

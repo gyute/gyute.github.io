@@ -9,10 +9,10 @@ export default function Blog() {
   return (
     <div className="container mx-auto">
       {posts?.map((post) => {
-        if (post === null || !post.date || !post.slug || !post.title)
+        if (post === null || !post.createdAt || !post.slug || !post.title)
           return null;
 
-        const { month, day, year } = formatDate(post.date);
+        const { month, day, year } = formatDate(post.createdAt);
 
         return (
           <div
