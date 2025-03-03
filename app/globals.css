@@ -135,6 +135,12 @@
     @apply [&_a]:underline [&_a]:decoration-green-700 [&_a]:underline-offset-4 [&_a]:dark:decoration-[#9cff9c];
   }
 
+  .markdown-table {
+    @apply [&_table]:w-full [&_table]:min-w-max [&_table]:border-collapse;
+    @apply [&_th:first-child]:rounded-l-md [&_th:last-child]:rounded-r-md [&_th]:border-gray-900 [&_th]:bg-gray-900 [&_th]:p-2 [&_th]:text-neutral-300 [&_th]:dark:border-gray-600 [&_th]:dark:bg-gray-600;
+    @apply [&_td]:border [&_td]:border-gray-300 [&_td]:p-2 [&_td]:dark:border-gray-900;
+  }
+
   .image-comment {
     @apply mt-1 text-center text-base text-gray-500;
   }

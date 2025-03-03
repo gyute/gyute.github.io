@@ -30,7 +30,11 @@ export default async function Post({
       .use(rehypeStringify, { allowDangerousHtml: true })
       .use(rehypePrettyCode, { theme: "material-theme-palenight" })
       .process(post.content)
-  ).toString();
+  )
+    .toString()
+    // TODO: Convert to Rehype extension
+    .replace(/<table>/g, '<div class="overflow-x-auto"><table>')
+    .replace(/<\/table>/g, "</table></div>");
 
   return (
     <>
@@ -38,7 +42,7 @@ export default async function Post({
         <h1 className="my-5">{post.title}</h1>
         <p className="mb-12 text-lg text-gray-500">{postDate(post.date)}</p>
         <div
-          className="markdown-link my-3 text-lg"
+          className="markdown-link markdown-table my-3 text-lg"
           dangerouslySetInnerHTML={{ __html: html }}
         />
       </div>
