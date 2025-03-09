@@ -101,12 +101,17 @@
 }
 
 @layer components {
-  .jump {
-    @apply scroll-m-[50vh] align-top text-xs;
-  }
 }
 
 @layer utilities {
+  .jump-center {
+    @apply scroll-m-[50vh];
+  }
+
+  .jump-guide {
+    @apply scroll-m-[50vh] align-top text-xs;
+  }
+
   .scrollbar-gutter-stable {
     scrollbar-gutter: stable;
   }
@@ -143,5 +148,9 @@
 
   .image-comment {
     @apply mt-1 text-center text-base text-gray-500;
+  }
+
+  .image-link-container {
+    @apply mx-auto block w-fit;
   }
 }

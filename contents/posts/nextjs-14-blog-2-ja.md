@@ -26,7 +26,7 @@ description: "Markdownでブログポスト."
 - `posts/[slug]/page.tsx{:sh}`
 
   - \* ブログの記事ページ
-  - \* 動的ルーティング<a id="aid1-1" href="#ref1" class="jump">[1-1]</a>を使うことでMDファイルでURLを指定できる
+  - \* 動的ルーティング<a id="aid1-1" href="#ref1" class="jump-guide">[1-1]</a>を使うことでMDファイルでURLを指定できる
   - \* resume(CV)やprojects, aboutページなどの追加にも対応できる
   - \* 今このページも同じ構成になっている
     - ↪︎ https://gyute.com/posts/nextjs-14-blog-2-ja ≈ app/posts/[slug]
@@ -302,7 +302,7 @@ export function generateStaticParams() {
 }
 ```
 
-- \* L11: リンターの働きで行替えになっているが、`params: { slug }{:gg}`がこのファイルの`[slug]{:gg}`<a id="aid1-2" href="#ref1" class="jump">[1-2]</a>に対応している(取ってきている)
+- \* L11: リンターの働きで行替えになっているが、`params: { slug }{:gg}`がこのファイルの`[slug]{:gg}`<a id="aid1-2" href="#ref1" class="jump-guide">[1-2]</a>に対応している(取ってきている)
 - \* L13: TypeScriptの型定義で`slug{:gg}`が`string{:gg}`であることを示している
 - \* L20-26: `remark{:gg}`と`rehype{:gg}`を使って`Markdown{:gg}`を`HTML{:gg}`に変換
   - \* L22: `remark-parse{:gg}`: MDをAST(Abstract Syntax Tree)に変換
@@ -326,7 +326,7 @@ export function generateStaticParams() {
 Whitespace-only changes.
 ```
 
-- \* このファイルは`空ファイル{:gg}`で、内容は意味を持たない。空の`contents/posts/{:gg}`ディレクトリをGitに追跡させるために追加してある<a id="aid2" href="#ref2" class="jump">[2]</a>
+- \* このファイルは`空ファイル{:gg}`で、内容は意味を持たない。空の`contents/posts/{:gg}`ディレクトリをGitに追跡させるために追加してある<a id="aid2" href="#ref2" class="jump-guide">[2]</a>
   - ↪︎ Gitは空のディレクトリを追跡しないためPushできないが、この仕様によって`lib/posts.ts{:gg}`の`getPostSlugs(){:gg}`がディレクトリを探せず、ビルドが失敗する
     - ↪︎ この件も、`return [{ slug: "not-found" }];{:gg}`と似た話で、`slug(MDファイル){:gg}`がある場合は関係ない(消しても良い)
 
@@ -473,6 +473,6 @@ npm install @tailwindcss/typography
 
 ---
 
-1: SSG環境でももちろん動的ルーティング([Dynamic Routes](https://nextjs.org/docs/14/app/building-your-application/routing/dynamic-routes))を使える。`[括弧の中]{:gg}`が必ず`slug{:gg}`である必要はなく、別に`[banana]{:gg}`でも良いが命名は慎重にしていきたい。<a id="ref1" href="#aid1-1" class="jump">return 1-1↩</a> | <a id="ref1" href="#aid1-2" class="jump">return 1-2↩</a>
+1: SSG環境でももちろん動的ルーティング([Dynamic Routes](https://nextjs.org/docs/14/app/building-your-application/routing/dynamic-routes))を使える。`[括弧の中]{:gg}`が必ず`slug{:gg}`である必要はなく、別に`[banana]{:gg}`でも良いが命名は慎重にしていきたい。<a id="ref1" href="#aid1-1" class="jump-guide">return 1-1↩</a> | <a id="ref1" href="#aid1-2" class="jump-guide">return 1-2↩</a>
 
-2: `.gitkeep{:gg}`は[de facto standard](https://en.wikipedia.org/wiki/De_facto_standard)のようなもので、今回は無理やりディレクトリをPushしたかったので入れてあるがMDファイルを追加したら削除しても良い(残しておいても良い)。[[stack overflow記事]](https://stackoverflow.com/a/7229996) <a id="ref2" href="#aid2" class="jump">return↩</a>
+2: `.gitkeep{:gg}`は[de facto standard](https://en.wikipedia.org/wiki/De_facto_standard)のようなもので、今回は無理やりディレクトリをPushしたかったので入れてあるがMDファイルを追加したら削除しても良い(残しておいても良い)。[[stack overflow記事]](https://stackoverflow.com/a/7229996) <a id="ref2" href="#aid2" class="jump-guide">return↩</a>

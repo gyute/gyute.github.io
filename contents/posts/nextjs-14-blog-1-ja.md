@@ -6,7 +6,7 @@ description: "Next.js14でブログを作ってみる. GitHub Pages, Next.js14, 
 
 2024年の後半はNext.js12から14にマイグレーションするプロジェクトで、App RouterとPages Routerの並行だったり、12と14のレンダリング方式の相違だったりでReactの基礎とNext.jsの理解にかなり役立つ経験ができた。せっかくの機会なので頭を14に切り替えたく14を使ってMarkdownブログを作ってみた。
 
-今回GitHub Pagesに静的サイト<a id="aid1" href="#ref1" class="jump">[1]</a>でデプロイすることでサーバコンポーネント(Server Components, SC)とクライアントコンポーネント(Client Components, CC)の分離の練習にもなった。今後は検索機能なども追加していくつもりだ。それでは早速GitHubの設定から始める。
+今回GitHub Pagesに静的サイト<a id="aid1" href="#ref1" class="jump-guide">[1]</a>でデプロイすることでサーバコンポーネント(Server Components, SC)とクライアントコンポーネント(Client Components, CC)の分離の練習にもなった。今後は検索機能なども追加していくつもりだ。それでは早速GitHubの設定から始める。
 
 ## tools
 
@@ -37,9 +37,9 @@ GitHub Pages用のリポジトリはルールとして
 でリポジトリの名前をつける必要がある。
 
 <img src="/nextjs-blog/new-repository.png" alt="new repository" class="rounded-lg my-5">
-<p class="image-comment">変なリポジトリ名にしてあるのは、私は既にGitHub Pagesを作ったからで、<br />このポストのコードはプロジェクトサイト<a id="aid2" href="#ref2" class="jump">[2]</a>としてデプロイする。<br />⇒ 正しくは、gyute.github.ioと入力</p>
+<p class="image-comment">変なリポジトリ名にしてあるのは、私は既にGitHub Pagesを作ったからで、<br />このポストのコードはプロジェクトサイト<a id="aid2" href="#ref2" class="jump-guide">[2]</a>としてデプロイする。<br />⇒ 正しくは、gyute.github.ioと入力</p>
 
-リポジトリ名をルール通り作ること<a id="aid2" href="#ref2" class="jump">[2]</a>で、GitHubが自動でリポジトリ名をURLにしてホスティングしてくれる。
+リポジトリ名をルール通り作ること<a id="aid2" href="#ref2" class="jump-guide">[2]</a>で、GitHubが自動でリポジトリ名をURLにしてホスティングしてくれる。
 
 リポジトリの作成が完了したら、作成されたリポジトリに移動し、`Settings > Pages{:gg}`を選択する。
 
@@ -210,7 +210,7 @@ npm install -D prettier prettier-plugin-tailwindcss autoprefixer eslint-plugin-i
 
 ---
 
-1: [Static Rendering](https://nextjs.org/docs/14/app/building-your-application/rendering/server-components#static-rendering-default)と[Static Site Generation(SSG)](https://nextjs.org/docs/14/pages/building-your-application/rendering/static-site-generation) <a id="ref1" href="#aid1" class="jump">return ↩</a>
+1: [Static Rendering](https://nextjs.org/docs/14/app/building-your-application/rendering/server-components#static-rendering-default)と[Static Site Generation(SSG)](https://nextjs.org/docs/14/pages/building-your-application/rendering/static-site-generation) <a id="ref1" href="#aid1" class="jump-guide">return ↩</a>
 
 2: 違う名前でリポジトリ名をすることもできるが、その場合は、
 
@@ -218,4 +218,4 @@ npm install -D prettier prettier-plugin-tailwindcss autoprefixer eslint-plugin-i
 https://<user>.github.io/<repository-name>
 ```
 
-のように`<user>.github.io{:gg}`は固定で、`<repository-name>{:gg}`がパスとして追加される。これを[プロジェクトサイト(Project site)](https://pages.github.com/)と言う。<a id="ref2" href="#aid2" class="jump">return ↩</a>
+のように`<user>.github.io{:gg}`は固定で、`<repository-name>{:gg}`がパスとして追加される。これを[プロジェクトサイト(Project site)](https://pages.github.com/)と言う。<a id="ref2" href="#aid2" class="jump-guide">return ↩</a>
