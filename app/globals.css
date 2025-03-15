@@ -129,7 +129,7 @@
   }
 
   .light-bg {
-    @apply bg-gray-300;
+    @apply bg-white;
   }
 
   .hover-color {
@@ -143,7 +143,7 @@
   .markdown-table {
     @apply [&_table]:w-full [&_table]:min-w-max [&_table]:border-collapse;
     @apply [&_th:first-child]:rounded-l-md [&_th:last-child]:rounded-r-md [&_th]:border-gray-900 [&_th]:bg-gray-900 [&_th]:p-2 [&_th]:text-neutral-300 [&_th]:dark:border-gray-600 [&_th]:dark:bg-gray-600;
-    @apply [&_td]:border [&_td]:border-gray-300 [&_td]:p-2 [&_td]:dark:border-gray-900;
+    @apply [&_td]:border-b-[1px] [&_td]:border-gray-300 [&_td]:p-2 [&_td]:dark:border-gray-700;
   }
 
   .image-comment {
