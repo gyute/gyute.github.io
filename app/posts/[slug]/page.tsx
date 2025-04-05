@@ -1,3 +1,4 @@
+import { transformerCopyButton } from "@rehype-pretty/transformers";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import rehypePrettyCode from "rehype-pretty-code";
@@ -28,7 +29,15 @@ export default async function Post({
       .use(remarkGfm)
       .use(remarkRehype, { allowDangerousHtml: true })
       .use(rehypeStringify, { allowDangerousHtml: true })
-      .use(rehypePrettyCode, { theme: "material-theme-palenight" })
+      .use(rehypePrettyCode, {
+        theme: "material-theme-palenight",
+        transformers: [
+          transformerCopyButton({
+            visibility: "always",
+            feedbackDuration: 1000,
+          }),
+        ],
+      })
       .process(post.content)
   )
     .toString()
