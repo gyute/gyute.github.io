@@ -1,6 +1,7 @@
 import { transformerCopyButton } from "@rehype-pretty/transformers";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeStringify from "rehype-stringify";
 import remarkGfm from "remark-gfm";
@@ -43,12 +44,7 @@ export default async function Post({
     .toString()
     // TODO: Convert to Rehype extension
     .replace(/<table>/g, '<div class="overflow-x-auto"><table>')
-    .replace(/<\/table>/g, "</table></div>")
-    .replace(
-      /clipboard="(.*?)"/,
-      (_, target) =>
-        `onclick="navigator.clipboard.writeText('${target}').then(() => alert('Copied to clipboard'))"`,
-    );
+    .replace(/<\/table>/g, "</table></div>");
 
   return (
     <>
@@ -69,6 +65,38 @@ export default async function Post({
         />
       </div>
       <Comments />
+      <Script
+        id="clipboard-copier"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            document.querySelectorAll('[data-clipboard]').forEach((el) => {
+              el.addEventListener('click', () => {
+                try {
+                  const target = el.getAttribute('data-clipboard');
+                  let textToCopy = '';
+
+                  if (target?.startsWith('#')) {
+                    const url = new URL(window.location.href);
+                    url.search = '';
+                    url.hash = target;
+                    textToCopy = url.toString();
+                  } else {
+                    textToCopy = target || '';
+                  }
+
+                  navigator.clipboard.writeText(textToCopy).then(() => {
+                    alert('Copied to clipboard');
+                  })
+                } catch (error) {
+                  console.error("Clipboard copy failed:", error);
+                  alert(\`Copy failed\nPlease try again manually\`);
+                }
+              })
+            })
+          `,
+        }}
+      />
     </>
   );
 }
