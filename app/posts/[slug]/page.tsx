@@ -43,7 +43,12 @@ export default async function Post({
     .toString()
     // TODO: Convert to Rehype extension
     .replace(/<table>/g, '<div class="overflow-x-auto"><table>')
-    .replace(/<\/table>/g, "</table></div>");
+    .replace(/<\/table>/g, "</table></div>")
+    .replace(
+      /clipboard="(.*?)"/,
+      (_, target) =>
+        `onclick="navigator.clipboard.writeText('${target}').then(() => alert('Copied to clipboard'))"`,
+    );
 
   return (
     <>
