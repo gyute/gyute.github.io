@@ -1,7 +1,6 @@
 import { transformerCopyButton } from "@rehype-pretty/transformers";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Script from "next/script";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeStringify from "rehype-stringify";
 import remarkGfm from "remark-gfm";
@@ -9,6 +8,7 @@ import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import { unified } from "unified";
 
+import { Clipboard } from "@/components/clipboard";
 import { Comments } from "@/components/comments";
 import { BLOG_TITLE, BLOG_URL } from "@/components/constants";
 import { postDate } from "@/lib/date";
@@ -65,38 +65,7 @@ export default async function Post({
         />
       </div>
       <Comments />
-      <Script
-        id="clipboard-copier"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            document.querySelectorAll('[data-clipboard]').forEach((el) => {
-              el.addEventListener('click', () => {
-                try {
-                  const target = el.getAttribute('data-clipboard');
-                  let textToCopy = '';
-
-                  if (target?.startsWith('#')) {
-                    const url = new URL(window.location.href);
-                    url.search = '';
-                    url.hash = target;
-                    textToCopy = url.toString();
-                  } else {
-                    textToCopy = target || '';
-                  }
-
-                  navigator.clipboard.writeText(textToCopy).then(() => {
-                    alert('Copied to clipboard');
-                  })
-                } catch (error) {
-                  console.error("Clipboard copy failed:", error);
-                  alert(\`Copy failed\nPlease try again manually\`);
-                }
-              })
-            })
-          `,
-        }}
-      />
+      <Clipboard />
     </>
   );
 }
